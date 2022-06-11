@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login
 from .models import *
 from django.contrib import messages
+from .forms import *
 
 # Create your views here.
 def index(request):
@@ -31,3 +32,14 @@ def sign_up(request):
 
 def profile(request):
     return render(request, 'wardapp/profile.html', {})
+
+def editprofile(request):
+    if request.method == 'POST':
+        # logged_user = Profile.objects.get(prof_user=request.user)
+        form = ProfileForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+        return redirect('profile')
+    else:
+        form = ProfileForm()
+    return render(request, 'wardapp/editprofile.html', {})    

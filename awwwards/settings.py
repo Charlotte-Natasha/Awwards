@@ -40,7 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'wardapp',
+    'crispy_forms',
 ]
+
+CRISPY_ALLOWED_TEMPLATES_PACKS = 'bootstrap5'
+
+CRISPY_TEMPLATES_PACK = 'bootstrap5'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

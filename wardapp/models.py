@@ -10,14 +10,14 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user.username
+        return self.author.username
 
     def save_profile(self):
-        self.user
+        self.author
 
     def delete_profile(self):
         self.delete()    
 
     @classmethod
     def search_profile(cls, name):
-        return cls.objects.filter(user__username__icontains=name).all()
+        return cls.objects.filter(author__username__icontains=name).all()

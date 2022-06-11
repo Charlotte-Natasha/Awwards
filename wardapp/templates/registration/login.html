@@ -1,4 +1,8 @@
-<section class="h-100 gradient-form" style="background-color: #eee;">
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="h-100 gradient-form" style="background: linear-gradient(90deg, rgba(231,207,188,1) 2%, rgba(72,39,74,1) 100%);">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-xl-10">
@@ -28,7 +32,7 @@
                                     </div>
 
                                     <div class="text-center pt-1 mb-5 pb-1">
-                                        <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                                        <button class="btn btn-secondary btn-block fa-lg gradient-custom-2 mb-3"
                                             type="button">Log
                                             in</button>
                                         <a class="text-muted" href="#!">Forgot password?</a>
@@ -36,16 +40,16 @@
 
                                     <div class="d-flex align-items-center justify-content-center pb-4">
                                         <p class="mb-0 me-2">Don't have an account?</p>
-                                        <button type="button" class="btn btn-outline-danger">Create new</button>
+                                        <button type="button" class="btn btn-outline-dark"> <a href="/signup"> Create new</a></button>
                                     </div>
 
                                 </form>
 
                             </div>
                         </div>
-                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                                <h4 class="mb-4">We are more than just a web application.</h4>
+                        <div class="col-lg-6 d-flex align-items-center" style="background: linear-gradient(90deg, rgba(72,39,74,1) 1%, rgba(231,207,188,1) 91%);">
+                            <div class="text-black px-3 py-4 p-md-5 mx-md-4">
+                                <h2 class="mb-4">We are more than just a web application.</h2>
                                 <p class="small mb-0">Awwwards is an application that allows a user to post a project he/she has created and get it reviewed by his/her peers.</p>
                             </div>
                         </div>
@@ -55,3 +59,4 @@
         </div>
     </div>
 </section>
+{% endblock %}

@@ -42,4 +42,7 @@ def editprofile(request):
         return redirect('profile')
     else:
         form = ProfileForm()
-    return render(request, 'wardapp/editprofile.html', {})    
+    return render(request, 'wardapp/editprofile.html', {})  
+
+def project(request):
+    return render(request, 'wardapp/project.html')      

@@ -11,7 +11,6 @@ def index(request):
 
 def sign_up(request):
     if request.method == 'POST':
-
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -41,7 +40,16 @@ def editprofile(request):
         return redirect('profile')
     else:
         form = ProfileForm()
-    return render(request, 'wardapp/editprofile.html', {})  
+    return render(request, 'wardapp/editprofile.html', {'form':form})  
 
 def project(request):
-    return render(request, 'wardapp/project.html')      
+    if request.method == 'POST':
+        form = ProjectForm(request.POST,request.FILES)
+        if form.is_valid():
+            user_image = form.save(commit=False)
+            # user_image.user = current_user
+            user_image.save()
+        return redirect('home')
+    else:
+        form = ProjectForm()
+    return render(request, 'wardapp/project.html', {'form':form})      

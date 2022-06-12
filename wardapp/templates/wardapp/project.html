@@ -1,1 +1,21 @@
-{% %}
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid">
+    <h3 class="text-center" style="margin-top:10px;">Post Your Project</h3>
+    <div class="card" style="padding:30px;">
+        <form action="{% url 'project' %}" method="post" enctype="multipart/form-data">
+
+            {%csrf_token%}
+
+            {{ form | crispy }}
+
+            <input type="submit" class="btn btn-success btn-block" value="Submit">
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}

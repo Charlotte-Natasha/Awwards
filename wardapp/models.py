@@ -10,7 +10,7 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.author.username
+        return f'{self.author.username} Profile'
 
     def save_profile(self):
         self.author

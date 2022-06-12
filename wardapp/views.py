@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login
+from django.contrib.auth import login, authenticate
 from .models import *
 from django.contrib import messages
 from .forms import *
@@ -25,7 +25,6 @@ def sign_up(request):
         if profile:
             messages.success(request,'Profile Created Please Login')
             return redirect('login')
-        return redirect('login')
 
     else:  
         return render(request, 'registration/signup.html', {})      

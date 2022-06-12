@@ -6,6 +6,12 @@
     style="background: linear-gradient(90deg, rgba(231,207,188,1) 2%, rgba(72,39,74,1) 100%);">
     <div class="mask d-flex align-items-center h-100 gradient-custom-3">
         <div class="container h-100">
+            {% if messages %} {% for i in messages %}
+            <div class="alert alert-success alert-dismissable fade show" role="alert">
+                {{ i.messages }}
+            <button type="button" class="btn-close" aria-label="Close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endfor %} {% endif %}
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12 col-md-9 col-lg-7 col-xl-6">
                     <div class="card" style="border-radius: 15px;">

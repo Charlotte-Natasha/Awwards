@@ -18,7 +18,7 @@ def sign_up(request):
         image = request.FILES['image']
         
         user = User.objects.create_user(username=username, email=email, password=password)
-        profile = Profile.objects.create(author=user, profile_picture=image)
+        profile = Profile.objects.create(user=user, profile_picture=image)
         user.save()
         profile.save()
 

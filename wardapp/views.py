@@ -25,10 +25,11 @@ def sign_up(request):
         username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
+        bio = request.POST.get('bio')
         image = request.FILES.get('image')
         
         user = User.objects.create_user(username=username, email=email, password=password)
-        profile = Profile.objects.create(user=user, profile_picture=image)
+        profile = Profile.objects.create(user=user, profile_picture=image, bio=bio)
         user.save()
         profile.save()
 

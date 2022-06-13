@@ -10,7 +10,7 @@ urlpatterns = [
     path('editprofile/', views.editprofile, name='editprofile'),
     path('addproject', views.addproject, name='addproject'),
     # path('review<id>/', views.review, name='review'),
-    path('api/profile',views.ProfileList.as_view(), name='profile'),
-    path('api/projects',views.ProjectList.as_view(), name='projects'),
+    path('api/profile',views.ProfileList.as_view(), name='apiprofile'),
+    path('api/projects',views.ProjectList.as_view(), name='apiprojects'),
     path('comment/<id>', views.comment, name='comment'),
 ]

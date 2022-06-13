@@ -21,12 +21,13 @@
                     
                 </div>
                 <div class="card-footer">
-                    {{project.user}}
-                    {% if user == project.user %}
+                    {{x.user}}
+                    {{x.created_at}}
+                    {% if user == x.user %}
                     <form method="POST">
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-danger" name="project-id"
-                            value="{{project.id}}">Delete</button>
+                        <button type="submit" class="btn btn-danger" name="x-id"
+                            value="{{x.id}}">Delete</button>
                     </form>
                     {% endif %}       
             </div>

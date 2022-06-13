@@ -48,9 +48,6 @@ def project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST,request.FILES)
         if form.is_valid():
-            # user_image = form.save(commit=False)
-            # user_image.user = current_user
-            # user_image.save()
             form.save()
         return redirect('home')
     else:

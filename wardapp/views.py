@@ -11,10 +11,10 @@ def index(request):
 
 def sign_up(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password = request.POST['password']
-        image = request.FILES['image']
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        image = request.FILES.get('image')
         
         user = User.objects.create_user(username=username, email=email, password=password)
         profile = Profile.objects.create(user=user, profile_picture=image)
@@ -46,9 +46,10 @@ def project(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST,request.FILES)
         if form.is_valid():
-            user_image = form.save(commit=False)
+            # user_image = form.save(commit=False)
             # user_image.user = current_user
-            user_image.save()
+            # user_image.save()
+            form.save()
         return redirect('home')
     else:
         form = ProjectForm()

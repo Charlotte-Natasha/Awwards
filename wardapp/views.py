@@ -55,3 +55,19 @@ def project(request):
     else:
         form = ProjectForm()
     return render(request, 'wardapp/project.html', {'forms':form})      
+
+def review(request, id):
+    project = Project.objects.get(id = id)
+    user = request.user
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = user
+            rate.projects = project
+            rate.save()
+            return redirect('home')
+    else:
+        form = ReviewForm()
+    return render(request, 'wardapp/review.html', {'form':form, 'project':project})            

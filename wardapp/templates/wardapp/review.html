@@ -3,44 +3,55 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container">
-    <div class="row  p-5 mt-2">
-
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="card p-3">
-
-                    <form class="form" action="" method="post" novalidate>
-                        {% csrf_token %}
-
-                        {{ form | crispy }}
-
-                        <div class="row pl-5">
-                            <button type="submit" class="btn btn-secondary"
-                                style="margin-top:14px; margin-left:-10px">Review</button>
-                        </div>
-
-
-                    </form>
-
-                </div>
-
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm">
+            <div class="view view-cascade overlay">
+                <img class="img-fluid" src="{{project.image.url}}" alt="Card image cap">
+                <a href="#!">
+                    <div class="mask rgba-white-slight"></div>
+                </a>
             </div>
         </div>
-        <div class="col-md-6">
-            <h3>Reviews</h3>
-            <div class="row">
-                {%for r in reviews%}
-                <p class="text-secondary pr-3">{{user.username}}</p>
-                <p class="pr-2"> {{r.text}}</p>
-                <p class="pr-3">Design : {{r.design}}</p>
-                <p class="pr-2"> Usability: {{r.usability}}</p>
-                <p class="pr-2"> Content: {{r.content}}</p>
-                {%endfor%}
-            </div>
+        <div class="col-sm">
+            <!-- Card content -->
+            <div class="card-body card-body-cascade text-center">
 
+                <!-- Title -->
+                <h2 class="card-title"><strong>{{project.title}}</strong></h2>
+                <!-- Subtitle -->
+                <h6 class="fw-bold py-2">Description</h6>
+                <!-- Text -->
+                <p class="card-text">{{project.description}}
+                </p>
+                <a href="{{project.projecturl}}">
+                    <button class="btn btn-secondary">Check out</button>
+                </a>
+                <h5 class="text-secondary">By: {{project.user}}</h5>
+                <a href="{% url 'review' project.id %}">
+                    <button class="btn btn-secondary" type="submit"> Review </button>
+                </a>
+            </div>
         </div>
     </div>
+    <iv class="ratings">
+        <h3 class="pt-3 h2">Rate</h3>
+        <div class="row">
+            <div class="col-sm">
+                <h4>Usability</h4>
+                {{project.review}}
+            </div>
+            <div class="col-sm">
+                <h4>Design</h4>
+                {{project.review}}
+            </div>
+            <div class="col-sm">
+                <h4>Content</h4>
+                {{project.review}}
+            </div>
+        </div>
+
 </div>
+<div>
 
 {% endblock %}

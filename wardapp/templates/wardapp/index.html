@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<div class="container pt-3">
+<div class=" pt-3">
     <div class="row">
         {%for x in project%}
-        <div class="col-md-4">
+        <div class="col-md-6 offset-md-3 mt-2">
             <div class="card">
 
                 <div class="view view-cascade overlay">
@@ -20,6 +20,17 @@
                     <a href="{% url 'review' x.id %}">Continue ..</a>
                 </div>
 
+            </div>
+            <div class="card-footer">
+                
+                    {% if user == project.user %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger" name="project-id"
+                            value="{{project.id}}">Delete</button>
+                    </form>
+                    {% endif %}
+                
             </div>
         </div>
         {%endfor%}

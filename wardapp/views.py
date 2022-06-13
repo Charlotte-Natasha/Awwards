@@ -8,6 +8,12 @@ from .forms import *
 # Create your views here.
 def index(request):
     project = Project.objects.all()
+    if request.method == 'POST':
+        project_id = request.POST.get('project-id')
+        project = Project.objects.filter(id=project_id).first()
+
+        if project and project.user == request.user:
+            project.delete() 
     return render(request, 'wardapp/index.html', {'project':project})
 
 def sign_up(request):

@@ -30,7 +30,7 @@
                     <button class="btn btn-secondary">Check out</button>
                 </a>
                 <h5 class="text-secondary">By: {{project.user}}</h5>
-                <a href="{% url 'review' project.id %}">
+                <a href="{% url 'comment' x.id %}">
                     <button class="btn btn-secondary" type="submit"> Review </button>
                 </a>
             </div>

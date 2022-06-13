@@ -10,14 +10,14 @@
 
                 <div class="view view-cascade overlay">
                     <img src="{{x.image.url}}" class="img-fluid" alt="">
-                    <a href="{% url 'review' x.id %}">
+                    <a href="{% url 'comment' x.id %}">
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>
 
                 <div class="card-body">
                     <h5 class="">{{x.title}}</h5>
-                    <a href="{% url 'review' x.id %}">Continue ..</a>
+                    <a href="{% url 'comment' x.id %}">Continue ..</a>
                 </div>
                 <div class="card-footer">
                     {% if user == project.user %}

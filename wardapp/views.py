@@ -64,7 +64,23 @@ def addproject(request):
         form = ProjectForm()
     return render(request, 'wardapp/addproject.html', {'form':form})      
 
-def review(request, id):
+# def review(request, id):
+#     project = Project.objects.get(id = id)
+#     user = request.user
+
+#     if request.method == 'POST':
+#         form = ReviewForm(request.POST)
+#         if form.is_valid():
+#             rate = form.save(commit=False)
+#             rate.user = user
+#             rate.projects = project
+#             rate.save()
+#             return redirect('home')
+#     else:
+#         form = ReviewForm()
+#     return render(request, 'wardapp/review.html', {'form':form, 'project':project}) 
+
+def comment(request, id):
     project = Project.objects.get(id = id)
     user = request.user
 
@@ -78,7 +94,7 @@ def review(request, id):
             return redirect('home')
     else:
         form = ReviewForm()
-    return render(request, 'wardapp/review.html', {'form':form, 'project':project})            
+    return render(request, 'wardapp/comment.html', {'form':form, 'project':project})               
 
 class ProfileList(APIView):
     def get(self,request,format = None):

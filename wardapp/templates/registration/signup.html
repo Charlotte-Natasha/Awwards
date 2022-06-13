@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
 
 <section class="vh-100 bg-image"
@@ -18,7 +20,7 @@
                         <div class="card-body p-5">
                             <h2 class="text-uppercase text-center mb-5">Create an account</h2>
 
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST" enctype="multipart/form-data"  action="{% url 'signup' %}">
 
                             {% csrf_token %}
                                 <div class="form-outline mb-4">

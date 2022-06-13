@@ -52,4 +52,4 @@ def project(request):
         return redirect('home')
     else:
         form = ProjectForm()
-    return render(request, 'wardapp/project.html', {'form':form})      
+    return render(request, 'wardapp/project.html', {'forms':form})      

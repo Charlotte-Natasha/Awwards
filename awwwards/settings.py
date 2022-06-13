@@ -15,7 +15,8 @@ import os
 from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 # Quick-start development settings - unsuitable for production
@@ -41,12 +42,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'wardapp',
     'crispy_forms',
+    'crispy_bootstrap5',
 ]
 
 CRISPY_ALLOWED_TEMPLATES_PACKS = 'bootstrap5'
 
 CRISPY_TEMPLATES_PACK = 'bootstrap5'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

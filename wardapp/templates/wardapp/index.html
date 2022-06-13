@@ -19,18 +19,16 @@
                     <h5 class="">{{x.title}}</h5>
                     <a href="{% url 'review' x.id %}">Continue ..</a>
                 </div>
-
-            </div>
-            <div class="card-footer">
-                
+                <div class="card-footer">
                     {% if user == project.user %}
                     <form method="POST">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-danger" name="project-id"
                             value="{{project.id}}">Delete</button>
                     </form>
-                    {% endif %}
-                
+                    {% endif %}       
+            </div>
+
             </div>
         </div>
         {%endfor%}

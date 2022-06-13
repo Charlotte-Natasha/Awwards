@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
 from .models import *
 from django.contrib import messages
 from .forms import *
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from .serializer import ProfileSerializer,ProjectSerializer
 
 # Create your views here.
 def index(request):
@@ -77,3 +79,15 @@ def review(request, id):
     else:
         form = ReviewForm()
     return render(request, 'wardapp/review.html', {'form':form, 'project':project})            
+
+class ProfileList(APIView):
+    def get(self,request,format = None):
+        all_profile = Profile.objects.all()
+        serializerdata = ProfileSerializer(all_profile,many = True)
+        return Response(serializerdata.data)
+
+class ProjectList(APIView):
+    def get(self,request,format = None):
+        all_projects = Project.objects.all()
+        serializerdata = ProjectSerializer(all_projects,many = True)
+        return Response(serializerdata.data)    

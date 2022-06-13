@@ -10,4 +10,9 @@ class ProfileForm(forms.ModelForm):
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['user', 'title', 'description', 'image', 'projecturl']     
+        fields = '__all__' 
+
+class ReviewForm(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = ['text', 'design', 'usability', 'content']           

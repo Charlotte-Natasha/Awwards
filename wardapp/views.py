@@ -28,8 +28,9 @@ def sign_up(request):
     else:  
         return render(request, 'registration/signup.html', {})      
 
-def profile(request):
-    return render(request, 'wardapp/profile.html', {})
+def profile(request, id):
+    prof = Profile.objects.get(user = id)
+    return render(request, 'wardapp/profile.html', {'profile':prof})
 
 def editprofile(request):
     if request.method == 'POST':

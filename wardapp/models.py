@@ -58,7 +58,7 @@ RATE_CHOICES = [
 class Review(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
     projects = models.ForeignKey(Project,on_delete = models.CASCADE)
-    date = models.DateField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
     text = models.TextField(max_length=3000,blank=True)
     design = models.PositiveSmallIntegerField(choices = RATE_CHOICES,default= 0)
     usability = models.PositiveSmallIntegerField(choices = RATE_CHOICES,default = 0)

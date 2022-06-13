@@ -16,10 +16,12 @@
                 </div>
 
                 <div class="card-body">
-                    <h5 class="">{{x.title}}</h5>
+                    <h5 class="fw-bold">{{x.title}}</h5>
                     <a href="{% url 'comment' x.id %}">Continue ..</a>
+                    
                 </div>
                 <div class="card-footer">
+                    {{user.username}}
                     {% if user == project.user %}
                     <form method="POST">
                         {% csrf_token %}

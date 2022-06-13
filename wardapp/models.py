@@ -42,9 +42,12 @@ class Project(models.Model):
     def search_projects(cls, name):
         return cls.objects.filter(title__icontains=name).all()
 
+    class Meta:
+        ordering = ['-created_at']     
+
 RATE_CHOICES = [
 (1,'1-Ok'),
-(2,'2-Watchable'),
+(2,'2-Scrollable'),
 (3,'3-Good'),
 (4,'4-Very Good'),
 (5,'5-Perfect'),

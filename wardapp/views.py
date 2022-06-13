@@ -30,8 +30,10 @@ def sign_up(request):
         return render(request, 'registration/signup.html', {})      
 
 def profile(request):
-    # prof = Profile.objects.get()
-    return render(request, 'wardapp/profile.html', {})
+    user = request.user
+    profile = Profile.objects.get( user = user)
+
+    return render(request, 'wardapp/profile.html', {'profile':profile})
 
 def editprofile(request):
     if request.method == 'POST':
@@ -44,7 +46,7 @@ def editprofile(request):
         form = ProfileForm()
     return render(request, 'wardapp/editprofile.html', {'form':form})  
 
-def project(request):
+def addproject(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST,request.FILES)
         if form.is_valid():
@@ -52,7 +54,7 @@ def project(request):
         return redirect('home')
     else:
         form = ProjectForm()
-    return render(request, 'wardapp/project.html', {'form':form})      
+    return render(request, 'wardapp/addproject.html', {'form':form})      
 
 def review(request, id):
     project = Project.objects.get(id = id)

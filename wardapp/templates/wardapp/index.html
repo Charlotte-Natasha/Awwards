@@ -7,16 +7,19 @@
         {%for x in project%}
         <div class="col-md-4">
             <div class="card">
+
                 <div class="view view-cascade overlay">
                     <img src="{{x.image.url}}" class="img-fluid" alt="">
-                    <a href="projects/{{x.id}}">
+                    <a href="{% url 'review' x.id %}">
                         <div class="mask rgba-white-slight"></div>
                     </a>
                 </div>
+
                 <div class="card-body">
                     <h5 class="">{{x.title}}</h5>
-                    <a href="project/{{x.id}}">Read more here..</a>
+                    <a href="{% url 'review' x.id %}">Continue ..</a>
                 </div>
+
             </div>
         </div>
         {%endfor%}

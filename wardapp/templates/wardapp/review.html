@@ -3,7 +3,7 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="row">
+<div class="container">
 
     <div class="col s12 m12">
         <div class="card horizontal">
@@ -21,13 +21,8 @@
                     <br>
                     <form method="POST" action="" role="form" class="col s12">
                         {% csrf_token %}
-                        <div class="input-field col s12">
-                            {{ form.rate }}
-                        </div>
-                        <div class="input-field col s12">
-                            {{ form.text }}
-                            <label for="textarea1">Opinion</label>
-                        </div>
+
+                        {{ form | crispy}}
 
                         <button type="submit" name="action" class="waves-effect waves-light btn"><i
                                 class="material-icons left">star</i>Rate</button>

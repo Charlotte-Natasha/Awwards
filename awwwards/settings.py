@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'wardapp',
     'crispy_forms',
     'crispy_bootstrap5',
+    'rest_framework',
 ]
 
 CRISPY_ALLOWED_TEMPLATES_PACKS = 'bootstrap5'

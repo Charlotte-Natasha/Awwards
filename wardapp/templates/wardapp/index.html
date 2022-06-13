@@ -2,4 +2,26 @@
 
 {% block content %}
 
+<div class="container pt-3">
+    <div class="row">
+        {%for x in project%}
+        <div class="col-md-4">
+            <div class="card">
+                <div class="view view-cascade overlay">
+                    <img src="{{x.image.url}}" class="img-fluid" alt="">
+                    <a href="projects/{{x.id}}">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <h5 class="">{{x.title}}</h5>
+                    <a href="project/{{x.id}}">Readmore</a>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+    </div>
+    </div>
+</div>
+
 {% endblock %}

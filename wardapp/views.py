@@ -7,7 +7,8 @@ from .forms import *
 
 # Create your views here.
 def index(request):
-    return render(request, 'wardapp/index.html')
+    project = Project.objects.all()
+    return render(request, 'wardapp/index.html', {'project':project})
 
 def sign_up(request):
     if request.method == 'POST':
@@ -54,7 +55,7 @@ def project(request):
         return redirect('home')
     else:
         form = ProjectForm()
-    return render(request, 'wardapp/project.html', {'forms':form})      
+    return render(request, 'wardapp/project.html', {'form':form})      
 
 def review(request, id):
     project = Project.objects.get(id = id)

@@ -34,10 +34,10 @@
             <div class="row">
                 {% for x in reviews %}
                 <p class="text-secondary pr-3">{{user.username}}</p>
-                <p class="pr-2"> {{review.text}}</p>
-                <p class="pr-3">Design : {{review.design}}</p>
-                <p class="pr-2"> Usability: {{review.usability}}</p>
-                <p class="pr-2"> Content: {{review.content}}</p>
+                <p class="pr-2"> {{x.text}}</p>
+                <p class="pr-3">Design : {{x.design}}</p>
+                <p class="pr-2"> Usability: {{x.usability}}</p>
+                <p class="pr-2"> Content: {{x.content}}</p>
                 {% endfor %}
             </div>
 

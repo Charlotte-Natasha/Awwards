@@ -6,8 +6,10 @@ from .forms import *
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializer import ProfileSerializer,ProjectSerializer
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
+@login_required(login_url="/login")
 def index(request):
     project = Project.objects.all()
     if request.method == 'POST':
@@ -37,12 +39,14 @@ def sign_up(request):
     else:  
         return render(request, 'registration/signup.html', {})      
 
+@login_required(login_url="/login")
 def profile(request):
     user = request.user
     profile = Profile.objects.get( user = user)
 
     return render(request, 'wardapp/profile.html', {'profile':profile})
 
+@login_required(login_url="/login")
 def editprofile(request):
     if request.method == 'POST':
         # logged_user = Profile.objects.get(prof_user=request.user)
@@ -54,6 +58,7 @@ def editprofile(request):
         form = ProfileForm()
     return render(request, 'wardapp/editprofile.html', {'form':form})  
 
+@login_required(login_url="/login")
 def addproject(request):
     if request.method == 'POST':
         form = ProjectForm(request.POST,request.FILES)
@@ -80,6 +85,7 @@ def addproject(request):
 #         form = ReviewForm()
 #     return render(request, 'wardapp/review.html', {'form':form, 'project':project}) 
 
+@login_required(login_url="/login")
 def comment(request, id):
     project = Project.objects.get(id = id)
     user = request.user
@@ -95,6 +101,7 @@ def comment(request, id):
     else:
         form = ReviewForm()
     return render(request, 'wardapp/comment.html', {'form':form, 'project':project})               
+
 
 class ProfileList(APIView):
     def get(self,request,format = None):

@@ -21,7 +21,7 @@
                     
                 </div>
                 <div class="card-footer">
-                    {{user.username}}
+                    {{project.user}}
                     {% if user == project.user %}
                     <form method="POST">
                         {% csrf_token %}
